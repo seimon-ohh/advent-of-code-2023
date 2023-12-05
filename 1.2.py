@@ -1000,39 +1000,7 @@ fourknflljrbrq63five
 42onef6seven
 39njjvzt7threetkccstz
 """
-
 values = data.strip().splitlines()
-calibration_values = []
-solution_value = 0
-print(values)
-
 
 for value in values:
-    print(value)
-    value_tuple = value
-    digits = []
-    for c in value_tuple:
-        if c.isdigit():
-            digits.append(c)
-    print(digits)
-    if len(digits) ==1:
-        calibration_value = digits[0]
-        calibration_value += digits[0]
-        calibration_values.append(calibration_value)
-
-    else:
-        calibration_value = digits[0]
-        calibration_value += digits[len(digits)-1]
-        calibration_values.append(calibration_value)
-print("\nCalibration Values:")
-print(calibration_values)
-
-
-
-for digit in calibration_values:
-    solution_value += int(digit)
-print("Solution Value:")
-print(solution_value)
-
-
-
+    
