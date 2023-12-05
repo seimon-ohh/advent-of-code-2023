@@ -1024,14 +1024,14 @@ for value in values:
         calibration_value = digits[0]
         calibration_value += digits[len(digits)-1]
         calibration_values.append(calibration_value)
-print("Calibration Value")
+print("\nCalibration Values:")
 print(calibration_values)
 
 
 
 for digit in calibration_values:
     solution_value += int(digit)
-
+print("Solution Value:")
 print(solution_value)
 
 
