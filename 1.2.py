@@ -1000,7 +1000,71 @@ fourknflljrbrq63five
 42onef6seven
 39njjvzt7threetkccstz
 """
+data1 = """
+two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen
+"""
 values = data.strip().splitlines()
+solution_value = 0
+calibration_values = []
+number_map = {
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8",
+    "nine": "9"
+}
+
+def create_number_array(value, number_map):
+    # Erstellen eines Arrays, das so groß ist wie die Länge der value
+    array_value = [0] * len(value)
+
+    # Durchsuchen der value nach jedem Zahlwort und Ziffer
+    for word, number in number_map.items():
+        start = 0
+        while start < len(value):
+            start = value.find(word, start)
+            if start == -1:
+                break
+            array_value[start] = number
+            start += len(word)
+
+    # Ziffern durchsuchen und zum Array hinzufügen
+    for i, char in enumerate(value):
+        if char.isdigit():
+            array_value[i] = char
+
+    # Prüfen, ob nur eine Zahl gefunden wurde und diese ggf. am Ende wiederholen
+    count_non_zero = sum(1 for num in array_value if num != '0')
+    if count_non_zero == 1:
+        last_non_zero = next(num for num in array_value if num != '0')
+        array_value[-1] = last_non_zero
+
+    return array_value
+
 
 for value in values:
-    
+    array_value = create_number_array(value, number_map)
+    print(array_value)
+    first_number = next((num for num in array_value if num != 0), '0')
+    last_number = next((num for num in reversed(array_value) if num != 0), '0')
+    calibration_value = int(first_number + last_number)
+    print(calibration_value)
+    calibration_values.append(calibration_value)
+
+# Summieren der Kalibrierungswerte zur Lösung
+solution_value = sum(calibration_values)
+
+print(solution_value, calibration_values)
+
+
+
